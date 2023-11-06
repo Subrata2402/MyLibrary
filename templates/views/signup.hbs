@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{> header}}
+    <title>MyLibrary | Sign Up</title>
+</head>
+
+<body>
+    {{> navbar}}
+    <div class="container">
+        <div class="container-box">
+            <div class="login-container">
+                <form action="/signup" method="post">
+                    <h2>Sign Up</h2>
+                    <div class="label-input">
+                        <label for="Name">Name:</label>
+                        <input type="text" id="user-name" name="username">
+                    </div>
+                    <div class="label-input">
+                        <label for="Email">Email Id:</label>
+                        <input type="text" id="email-id" name="emailid">
+                    </div>
+                    <div class="label-input">
+                        <label for="Password">Password:</label>
+                        <input type="password" id="password" name="password">
+                    </div>
+                    <div class="label-input">
+                        <label for="Cpassword">Conferm Password:</label>
+                        <input type="password" id="confirm-password" name="cpassword">
+                    </div>
+                    <div class="label-input">
+                        <label for="name">Already have an account? <a href="/login">Sign In</a></label>
+                        <button class="btn" id="signup-btn" type="submit">Sign Up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

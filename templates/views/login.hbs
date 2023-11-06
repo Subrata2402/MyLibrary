@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{> header}}
+    <title>MyLibrary | Sign In</title>
+</head>
+
+<body>
+    {{> navbar}}
+    <div class="container">
+        <div class="container-box">
+            <div class="login-container">
+                <form action="/login" method="post">
+                    <h2>Sign In</h2>
+                    <div class="label-input">
+                        <label for="name">User Id:</label>
+                        <input type="text" name="userid">
+                    </div>
+                    <div class="label-input">
+                        <label for="name">Password:</label>
+                        <input type="password" name="password">
+                    </div>
+                    <div class="label-input">
+                        <label for="name">Don't have account? <a href="/signup">Sign Up</a></label>
+                        <button class="btn" type="submit">Sign In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
