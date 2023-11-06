@@ -46,8 +46,11 @@ app.post('/signup', async (req, res) => {
                 password: password
             });
 
-            await registerDetails.generateAuthToken();
-            
+            const token = await registerDetails.generateAuthToken();
+            res.cookie("jwt", token, {
+                expires: new Date(Date.now() + 30000),
+                httpOnly: true
+            });
             await registerDetails.save();
             res.status(201).render('index');
         } else {
@@ -65,7 +68,11 @@ app.post('/login', async (req, res) => {
         const userData = await Register.findOne({ email: userid });
         const isMatch = await bcrypt.compare(password, userData.password);
         if (isMatch) {
-            await userData.generateAuthToken();
+            const token = await userData.generateAuthToken();
+            res.cookie("jwt", token, {
+                expires: new Date(Date.now() + 30000),
+                httpOnly: true
+            });
             res.status(201).render('index');
         } else {
             res.send("Invalid Login Details");
