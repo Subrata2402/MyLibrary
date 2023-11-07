@@ -28,11 +28,13 @@
     border: 2px solid cadetblue;
     border-radius: 5px;
     padding: 35px;
+    box-shadow: 0 0 10px 0 rgb(103, 125, 131);
 }
 
 .login-container h2 {
     text-align: center;
-    padding: 0 10px 10px;
+    padding: 0 20px 10px;
+    margin-bottom: 20px;
 }
 
 .label-input {
@@ -81,6 +83,73 @@ button:active {
     transform: scale(1.1);
 }
 
+.display-button {
+    display: none;
+}
+
+footer {
+    width: 100%;
+    background-color: cadetblue;
+    position: relative;
+    bottom: 0;
+    text-align: center;
+    padding: 6px 3px;
+    color: white;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Add Question part */
+.add-question {
+    margin: 50px 20% 0;
+}
+
+.add-question-container {
+    width: 100%;
+    border: 2px solid cadetblue;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.add-question-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.add-question-container label {
+    font-size: 20px;
+    margin: 15px 0 5px;
+}
+
+.add-question-container textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid cadetblue;
+    outline: none;
+    background-color: white;
+    color: black;
+}
+
+.add-question-container button {
+    outline: none;
+    border: none;
+    margin-top: 20px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: cadetblue;
+    color: white;
+    cursor: pointer;
+}
+
+/* End Add Question part */
+
 @media (max-width: 800px) {
     .container-box {
         margin-top: 50px;
@@ -102,5 +171,9 @@ button:active {
 
     .label-input input {
         width: 100%;
+    }
+
+    .add-question {
+        margin: 20px 2%;
     }
 }

@@ -21,6 +21,7 @@ label.logo {
     color: white;
     line-height: 60px;
     padding: 0 50px;
+    font-weight: 700;
 }
 
 nav ul {
@@ -43,7 +44,7 @@ nav ul li a {
 }
 
 nav ul li a.active, nav ul li a:hover {
-    background-color: darkcyan;
+    background-color: rgb(73, 121, 123);
 }
 
 #checkbtn {

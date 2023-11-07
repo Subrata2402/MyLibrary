@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{> header}}
+    <title>MyLibrary</title>
+    <style>
+        .box-container {
+            margin: 0 15%;
+            padding: 20px;
+        }
+
+        p {
+            margin: 10px 0 20px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .box-container {
+                padding: 10px;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    {{> navbar isAthenticated=isAthenticated}}
+    <main>
+        <div class="box-container">
+            {{#if questions}}
+            {{#each questions}}
+                <h3>{{math @index "+" 1}}. {{question}}</h3>
+                <p>{{answer}}</p>
+            {{/each}}
+            {{/if}}
+        </div>
+    </main>
+</body>
+
+</html>

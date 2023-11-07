@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    {{> navbar}}
+    {{> navbar isAthenticated=isAthenticated}}
     <div class="container">
         <div class="container-box">
             <div class="login-container">
@@ -15,20 +15,21 @@
                     <h2>Sign In</h2>
                     <div class="label-input">
                         <label for="name">User Id:</label>
-                        <input type="text" name="userid">
+                        <input type="text" name="userid" required>
                     </div>
                     <div class="label-input">
                         <label for="name">Password:</label>
-                        <input type="password" name="password">
+                        <input type="password" name="password" required>
                     </div>
                     <div class="label-input">
                         <label for="name">Don't have account? <a href="/signup">Sign Up</a></label>
-                        <button class="btn" type="submit">Sign In</button>
+                        <button class="btn" type="submit" id="login-btn">Sign In</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    {{!-- {{> footer}} --}}
 </body>
 
 </html>

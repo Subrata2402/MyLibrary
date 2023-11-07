@@ -13,9 +13,14 @@
         <label class="logo">MyLibrary</label>
 
         <ul>
-            <li><a class="active" href="/">home</a></li>
-            <li><a href="/login">login</a></li>
-            <li><a href="/signup">register</a></li>
+            <li><a class="active" href="/" id="home">home</a></li>
+            {{#if isAuthenticated}}
+                <li><a href="/library" id="library">Library</a></li>
+                <li><a href="/logout" id="logout">logout</a></li>
+            {{else}}
+                <li><a href="/login" id="">login</a></li>
+                <li><a href="/signup">register</a></li>
+            {{/if}}
         </ul>
     </nav>
 
