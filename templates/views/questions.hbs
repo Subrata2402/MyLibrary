@@ -21,6 +21,7 @@
             }
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body>
@@ -29,8 +30,11 @@
         <div class="box-container">
             {{#if questions}}
             {{#each questions}}
-                <h3>{{math @index "+" 1}}. {{question}}</h3>
-                <p>{{answer}}</p>
+            <h3>{{math @index "+" 1}}. {{question}}</h3>
+            <p id="content{{math @index '+' 1}}"></p>
+            <script>
+                document.getElementById('content{{math @index "+" 1}}').innerHTML = marked.parse(`{{{ answer }}}`);
+            </script>
             {{/each}}
             {{/if}}
         </div>

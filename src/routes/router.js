@@ -42,10 +42,16 @@ router.get("/logout", auth, async (req, res) => {
 });
 
 router.get("/signup", (req, res) => {
+    if (req.cookies.jwt) {
+        res.render("index", {isAuthenticated: req.cookies.jwt});
+    }
     res.render("signup", {isAuthenticated: req.cookies.jwt});
 });
 
 router.get("/login", (req, res) => {
+    if (req.cookies.jwt) {
+        res.render("index", {isAuthenticated: req.cookies.jwt});
+    }
     res.render("login", {isAuthenticated: req.cookies.jwt});
 });
 
@@ -85,7 +91,7 @@ router.post("/login", async (req, res) => {
         const isMatch = await bcrypt.compare(password, userEmail.password);
         const token = await userEmail.generateAuthToken();
         res.cookie("jwt", token, {
-            expires: new Date(Date.now() + 360000),
+            expires: new Date(Date.now() + 86400000),
             httpOnly: true,
         });
         if (isMatch) {
