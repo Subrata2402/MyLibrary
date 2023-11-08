@@ -8,28 +8,50 @@
 
 <body>
     {{> navbar isAthenticated=isAthenticated}}
-    <div class="container">
-        <div class="container-box">
-            <div class="login-container">
-                <form action="/login" method="post">
-                    <h2>Sign In</h2>
-                    <div class="label-input">
-                        <label for="name">User Id:</label>
-                        <input type="text" name="userid" required>
-                    </div>
-                    <div class="label-input">
-                        <label for="name">Password:</label>
-                        <input type="password" name="password" required>
-                    </div>
-                    <div class="label-input">
-                        <label for="name">Don't have account? <a href="/signup">Sign Up</a></label>
-                        <button class="btn" type="submit" id="login-btn">Sign In</button>
-                    </div>
-                </form>
+    <div class="container-box">
+        <div class="login-container">
+            <h2>Sign In</h2>
+            {{#if messageStatus}}
+            <div class="alert alert-warning alert-dismissible fade show mt-3 mb-3" role="alert">
+                <strong>{{messageStatus}}</strong> {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
+            {{/if}}
+            <form action="/login" method="post">
+                <div class="label-input">
+                    <label for="emailid"><i class="fa-solid fa-user fa-xs"></i>User Id</label>
+                    <input type="email" name="userid" abc="text" id="emailid" required placeholder="example@abc.com">
+                </div>
+                <div class="label-input">
+                    <label for="password"><i class="fa-solid fa-lock fa-xs"></i>Password</label>
+                    <div class="input">
+                        <input type="password" name="password" abc="password" id="password" required placeholder="**********"><i class="fa-regular fa-eye"></i>
+                    </div>
+                </div>
+                <div class="label-input">
+                    <button class="btn" type="submit" id="login-btn">Sign In</button>
+                    <label for="name">Don't have an account? <a href="/signup">Sign Up</a></label>
+                </div>
+            </form>
         </div>
     </div>
-    {{!-- {{> footer}} --}}
+    {{> footer}}
+
+    <script>
+        let pEye = document.querySelector('.fa-eye');
+        let password = document.querySelector('input[type="password"]');
+        pEye.addEventListener('click', () => {
+            if (password.type === 'password') {
+                password.type = 'text';
+                pEye.classList.remove('fa-eye');
+                pEye.classList.add('fa-eye-slash');
+            } else {
+                password.type = 'password';
+                pEye.classList.remove('fa-eye-slash');
+                pEye.classList.add('fa-eye');
+            }
+        })
+    </script>
 </body>
 
 </html>

@@ -28,6 +28,14 @@ router.get("/library", (req, res) => {
     }
 });
 
+router.get("/contact", (req, res) => {
+    res.render("contact", {isAuthenticated: req.cookies.jwt});
+});
+
+router.get("/resume", (req, res) => {
+    res.render("resume", {isAuthenticated: req.cookies.jwt});
+});
+
 router.get("/logout", auth, async (req, res) => {
     try {
         req.user.tokens = req.user.tokens.filter((currentElement) => {
@@ -35,7 +43,7 @@ router.get("/logout", auth, async (req, res) => {
         });
         res.clearCookie("jwt");
         await req.user.save();
-        res.render("login");
+        res.render("login", {message: "Logged out successfully!", messageStatus: "Success!"});
     } catch (error) {
         res.status(500).send(error);
     }
@@ -101,6 +109,19 @@ router.post("/login", async (req, res) => {
         }
     } catch (error) {
         res.status(400).send("Invalid Login Details");
+    }
+});
+
+router.post("/contact", async (req, res) => {
+    try {
+        const name = req.body.name;
+        const email = req.body.email;
+        const mobile = req.body.mobile;
+        const message = req.body.message;
+        // console.log(name, mobile, email, message);
+        res.status(201).render("contact", {isAuthenticated: req.cookies.jwt, message: "Your message has been sent successfully!", messageStatus: "Success!"});
+    } catch (error) {
+        res.status(400).send(error);
     }
 });
 

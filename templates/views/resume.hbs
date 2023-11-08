@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{> header}}
+    <title>MyLibrary | Resume</title>
+    <style>
+        * {
+            background-color: dark;
+        }
+
+        .rounded-circle {
+            width: 160px;
+            height: 160px;
+            border: 5px solid rgb(43, 155, 125);
+        }
+
+        .text-underline {
+            padding-bottom: 2px;
+            border-bottom-style: solid;
+            border-bottom-width: 3px;
+            width: fit-content;
+        }
+
+        .a-tag {
+            text-decoration: none;
+            color: black;
+        }
+
+        i {
+            margin-right: 10px !important;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    {{> navbar isAthenticated=isAthenticated}}
+    <div class="container bg-primary-emphasis border border-primary mt-5">
+        <div class="row p-3 justify-content-center">
+            <div class="col-sm-8 fw-semibold">
+                <div class="text-uppercase fs-1">Subrata Das</div>
+                <div class="fs-4 text-info">Web Development</div>
+                <div class="pt-2 ">
+                    An award-winning and confident instructor, able to establish rapport quickly and conduct the
+                    training sessions with clarity and enthusiasm.
+                </div>
+            </div>
+            <div class="col-sm text-end">
+                <img src="images/profile.png" class="rounded-circle" alt="ProfilePic">
+            </div>
+        </div>
+    </div>
+    <div class="container bg-secondary-subtle border border-primary p-2">
+        <div class="row fw-bold p-3">
+            <div class="col-sm">
+                <div class="row pb-2">
+                    <div>
+                        <i class="bi bi-envelope-fill"></i>
+                        <a href="mailto:subratadas3250@gmail.com" class="a-tag">subratadas3250@gmail.com</a>
+                    </div>
+                </div>
+                <div class="row pb-2">
+                    <div>
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <a href="#" class="a-tag">Midnapore, West Bengal, India</a>
+                    </div>
+                </div>
+                <div class="row pb-2">
+                    <div>
+                        <i class="bi bi-twitter"></i>
+                        <a href="https://mobile.twitter.com/Subrata3250" target="_blank"
+                            class="a-tag">mobile.twitter.com/Subrata3250</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="row pb-2">
+                    <div>
+                        <i class="bi bi-phone-fill"></i>
+                        <a href="tel:+919749844740" class="a-tag">+91 9749844740</a>
+                    </div>
+                </div>
+                <div class="row pb-2">
+                    <div>
+                        <i class="bi bi-linkedin"></i>
+                        <a href="https://www.linkedin.com/in/subrata-das-867903243/" target="_blank"
+                            class="a-tag">linkedin.com/in/subrata-das-867903243/</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <i class="bi bi-github"></i>
+                        <a href="https://github.com/Subrata2402" target="_blank"
+                            class="a-tag">github.com/Subrata2402</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container bg-success-subtle border border-info p-3 mb-5">
+        <div class="row p-2">
+
+            <div class="col-sm">
+
+                <!-- Education Part Start -->
+                <div class="text-uppercase fw-bold fs-2 text-info text-underline">
+                    Education
+                </div>
+                <div class="fw-bold fs-4 pt-3">
+                    B.Sc
+                </div>
+                <div class="fw-semibold fs-5">
+                    Midnapore College (Autonomous)
+                </div>
+                <div class="fst-italic text-info">
+                    06/2019 - 07/2022
+                </div>
+                <div class="fst-italic text-info">
+                    Courses
+                </div>
+                <div class="fw-semibold">
+                    <i class="bi bi-dot"></i> Mathematics
+                </div>
+
+                <div class="fw-bold fs-4 pt-4">
+                    M.Sc
+                </div>
+                <div class="fw-semibold fs-5">
+                    Vidyasagar University
+                </div>
+                <div class="fst-italic text-info">
+                    11/2022 - Present
+                </div>
+                <div class="fst-italic text-info">
+                    Courses
+                </div>
+                <div class="fw-semibold">
+                    <i class="bi bi-dot"></i> Computer Science
+                </div>
+                <!-- Education Part End -->
+
+                <!-- Projects Part Start -->
+                <div class="text-uppercase fw-bold fs-2 text-info pt-5 text-underline">
+                    Projects
+                </div>
+                <div class="fw-bold fs-4 pt-3">
+                    Tic-Tac-Toe (AI)
+                </div>
+                <div class="fst-italic text-info">
+                    06/2022 - 06/2022
+                </div>
+                <div class="fw-bold">
+                    <i class="bi bi-dot"></i>
+                    <a href="https://subrata2402.github.io/Tic-Tac-Toe/" class="a-tag">https://subrata2402.github.io/Tic-Tac-Toe/</a>
+                </div>
+
+                <div class="fw-bold fs-4 pt-3">
+                    Camelia (Discord Application)
+                </div>
+                <div class="fst-italic text-info">
+                    02/2020 - 05/2020
+                </div>
+                <div class="fw-bold mb-5">
+                    <i class="bi bi-dot"></i> <a href="https://subrata2402.github.io/Camelia-2.0/" class="a-tag">https://subrata2402.github.io/Camelia-2.0/</a>
+                </div>
+                <!-- Projects Part End -->
+
+            </div>
+
+            <div class="col-sm">
+
+                <!-- Skills Part Start -->
+                <div class="text-uppercase fw-bold fs-2 text-info text-underline">
+                    Skills
+                </div>
+                <div class="fw-semibold pt-3">
+                    <button type="button" class="btn btn-primary mt-1 fw-semibold">Python</button>
+                    <button type="button" class="btn btn-primary mt-1 fw-semibold">HTML</button>
+                    <button type="button" class="btn btn-primary mt-1 fw-semibold">CSS</button>
+                    <button type="button" class="btn btn-primary mt-1 fw-semibold">Javascript</button>
+                    <button type="button" class="btn btn-primary mt-1 fw-semibold">Django</button>
+                </div>
+                <!-- Skills Part End -->
+
+                <!-- Certificates Part Start -->
+                <div class="text-uppercase fw-bold fs-2 text-info mt-5 text-underline">
+                    Certificates
+                </div>
+                <div class="fw-semibold fs-5 mt-3">
+                    Complete Python Challenges, Python MCQ& Python Recap in 2022
+                </div>
+                <div class="fst-italic text-info">
+                    02/2020 - 05/2020
+                </div>
+                <div class="fw-bold mb-5">
+                    <i class="bi bi-dot"></i><a href="ude.my/UC-9b922591-34db-4e69-897e-bd41a75d2211/" class="a-tag">ude.my/UC-9b922591-34db-4e69-897e-bd41a75d2211/</a>
+                </div>
+                <!-- Certificates Part End -->
+
+                <!-- Languages Part Start -->
+                <div class="text-uppercase fw-bold fs-2 text-info mt-5 text-underline">
+                    Languages
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="fw-semibold fs-5 mt-3">
+                            Bengali
+                        </div>
+                        <div class="fst-italic text-info">
+                            Native or Bilingual Proficiency
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="fw-semibold fs-5 mt-3">
+                            Hindi
+                        </div>
+                        <div class="fst-italic text-info">
+                            Full Professional Proficiency
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="fw-semibold fs-5 mt-3">
+                            English
+                        </div>
+                        <div class="fst-italic text-info">
+                            Professional Working Proficiency
+                        </div>
+                    </div>
+                </div>
+                <!-- Languages Part End -->
+
+                <!-- Hobbies Part Start -->
+                <div class="text-uppercase fw-bold fs-2 text-info mt-5 text-underline">
+                    Hobbies
+                </div>
+                <div class="pt-3">
+                    <button type="button" class="btn btn-outline-dark fw-semibold mt-1">Movies</button>
+                    <button type="button" class="btn btn-outline-dark fw-semibold mt-1">Coding</button>
+                    <button type="button" class="btn btn-outline-dark fw-semibold mt-1">Adventure</button>
+                </div>
+                <!-- Hobbies Part End -->
+
+            </div>
+
+        </div>
+    </div>
+    {{> footer}}
+</body>
+
+</html>
