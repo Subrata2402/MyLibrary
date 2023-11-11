@@ -12,28 +12,55 @@ router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
 router.use(cookieParser());
 
+const getActive = (path) => {
+    const navbar = {
+        index: "",
+        library: "",
+        contact: "",
+        resume: "",
+        about: "",
+    };
+    switch (path) {
+        case "/":
+            navbar.index = "active";
+            return navbar;
+        case "/library":
+            navbar.library = "active";
+            return navbar;
+        case "/contact":
+            navbar.contact = "active";
+            return navbar;
+        case "/resume":
+            navbar.resume = "active";
+            return navbar;
+        case "/about":
+            navbar.about = "active";
+            return navbar;
+    }
+}
+
 router.get("/", (req, res) => {
     if (req.cookies.jwt) {
-        res.render("index", {isAuthenticated: req.cookies.jwt});
+        res.render("index", {isAuthenticated: req.cookies.jwt, active: getActive(req.path)});
     } else {
-        res.render("login", {isAuthenticated: req.cookies.jwt});
+        res.render("login", {isAuthenticated: req.cookies.jwt, active: getActive(req.path)});
     }
 });
 
 router.get("/library", (req, res) => {
     if (req.cookies.jwt) {
-        res.render("library", {isAuthenticated: req.cookies.jwt});
+        res.render("library", {isAuthenticated: req.cookies.jwt, active: getActive(req.path)});
     } else {
         res.render("login", {isAuthenticated: req.cookies.jwt});
     }
 });
 
 router.get("/contact", (req, res) => {
-    res.render("contact", {isAuthenticated: req.cookies.jwt});
+    res.render("contact", {isAuthenticated: req.cookies.jwt, active: getActive(req.path)});
 });
 
 router.get("/resume", (req, res) => {
-    res.render("resume", {isAuthenticated: req.cookies.jwt});
+    res.render("resume", {isAuthenticated: req.cookies.jwt, active: getActive(req.path)});
 });
 
 router.get("/logout", auth, async (req, res) => {
@@ -51,14 +78,14 @@ router.get("/logout", auth, async (req, res) => {
 
 router.get("/signup", (req, res) => {
     if (req.cookies.jwt) {
-        res.render("index", {isAuthenticated: req.cookies.jwt});
+        res.render("index", {isAuthenticated: req.cookies.jwt, active: getActive("/")});
     }
     res.render("signup", {isAuthenticated: req.cookies.jwt});
 });
 
 router.get("/login", (req, res) => {
     if (req.cookies.jwt) {
-        res.render("index", {isAuthenticated: req.cookies.jwt});
+        res.render("index", {isAuthenticated: req.cookies.jwt, active: getActive("/")});
     }
     res.render("login", {isAuthenticated: req.cookies.jwt});
 });
@@ -68,21 +95,20 @@ router.post("/signup", async (req, res) => {
         const name = req.body.username;
         const email = req.body.emailid;
         const password = req.body.password;
-        const cpassword = req.body.confirmpassword;
+        const cpassword = req.body.cpassword;
         if (password === cpassword) {
             const registerUser = new Register({
-                username: name,
-                emailid: email,
+                name: name,
+                email: email,
                 password: password,
-                confirmpassword: cpassword,
             });
             const token = await registerUser.generateAuthToken();
             res.cookie("jwt", token, {
-                expires: new Date(Date.now() + 30000),
+                expires: new Date(Date.now() + 86400000),
                 httpOnly: true,
             });
-            const registered = await registerUser.save();
-            res.status(201).render("index", {isAuthenticated: req.cookies.jwt});
+            await registerUser.save();
+            res.status(201).render("index", {isAuthenticated: req.cookies.jwt, active: getActive("/")});
         } else {
             res.send("Passwords are not matching");
         }
@@ -103,7 +129,7 @@ router.post("/login", async (req, res) => {
             httpOnly: true,
         });
         if (isMatch) {
-            res.status(201).render("index", {isAuthenticated: true});
+            res.status(201).render("index", {isAuthenticated: true, active: getActive("/")});
         } else {
             res.send("Invalid Login Details");
         }
@@ -119,7 +145,7 @@ router.post("/contact", async (req, res) => {
         const mobile = req.body.mobile;
         const message = req.body.message;
         // console.log(name, mobile, email, message);
-        res.status(201).render("contact", {isAuthenticated: req.cookies.jwt, message: "Your message has been sent successfully!", messageStatus: "Success!"});
+        res.status(201).render("contact", {isAuthenticated: req.cookies.jwt, message: "Your message has been sent successfully!", messageStatus: "Success!", active: getActive(req.path)});
     } catch (error) {
         res.status(400).send(error);
     }

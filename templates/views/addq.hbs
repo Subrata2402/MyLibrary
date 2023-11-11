@@ -19,8 +19,17 @@
         </div>
         {{/if}}
         <form action="/addq" method="post" class="add-question-container">
-            <label for="difficulty">Topic<span>*</span></label>
-            <textarea id="" cols="" rows="1" name="topic" required placeholder="Networking"></textarea>
+            <div class="topics">
+                <label for="topics">Topic<span>*</span></label>
+                <select name="topic" id="topics">
+                    <option value="advanced-networking">Advanced Networking</option>
+                    <option value="network-security">Network Security</option>
+                    <option value="iot-and-embedded-system">IoT &amp; Embedded System</option>
+                    <option value="machine-learning">Machine Learning</option>
+                    <option value="deep-learning">Deep Learning</option>
+                    <option value="electronics">Electronics</option>
+                </select>
+            </div>
             <label for="question">Question<span>*</span></label>
             <textarea id="" cols="" rows="5" name="question" required placeholder="What is Networking?"></textarea>
             <label for="answer">Answer<span>*</span></label>

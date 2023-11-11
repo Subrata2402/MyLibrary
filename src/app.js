@@ -29,6 +29,10 @@ hbs.registerHelper("math", function(lvalue, operator, rvalue, options) {
     }[operator];
 });
 
+router.get("/about", (req, res) => {
+    res.render("404", {isAuthenticated: req.cookies.jwt});
+});
+
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
 });

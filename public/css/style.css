@@ -141,6 +141,33 @@
     color: white;
 }
 
+.add-question-container .topics {
+    display: flex;
+    padding-top: 20px;
+}
+
+.add-question-container .topics label {
+    flex: 0.1;
+}
+
+.add-question-container .topics select {
+    flex: 0.9;
+    padding: 0 10px;
+    outline: none;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+}
+
+.add-question-container .topics select option {
+    font-size: 20px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid cadetblue;
+    background-color: white;
+    color: black;
+}
+
 .add-question-container label, .contact-container label {
     font-size: 20px;
     margin: 15px 0 5px;
@@ -215,6 +242,7 @@
 
 .library-container .topic:hover {
     box-shadow: 0 0 10px 0;
+    transform: scale(1.03);
 }
 
 .library-container .img-container {
@@ -338,7 +366,8 @@ footer {
 
 /* Footer Container End */
 
-@media (max-width: 800px) {
+/* Responsive Design */
+@media (max-width: 1000px) {
     .container-box {
         margin-top: 50px;
     }
@@ -369,8 +398,22 @@ footer {
         padding: 10px;
     }
 
-    .add-question, .add-question-container, .contact-container, .contact-container form {
+    .add-question, .add-question-container,
+    .contact-container, .contact-container form {
         padding: 10px;
+    }
+
+    .add-question-container .topics {
+        padding-top: 10px;
+        flex-direction: column;
+    }
+    
+    .add-question-container .topics select {
+        padding: 10px;
+        outline: none;
+        border-radius: 5px;
+        background-color: white;
+        color: black;
     }
 
     .footer-container {

@@ -26,8 +26,8 @@ router.get("/library", (req, res) => {
 
 router.get("/questions", async (req, res) => {
     if (req.cookies.jwt) {
-        const questions = await Question.find({});
-        // console.log(questions);
+        if (!req.query.topic) return res.render("library", {isAuthenticated: req.cookies.jwt});
+        const questions = await Question.find({topic: req.query.topic});
         res.render("questions", {isAuthenticated: req.cookies.jwt, questions: questions});
     } else {
         res.render("login", {isAuthenticated: req.cookies.jwt});
@@ -40,17 +40,13 @@ router.post("/addq", async (req, res) => {
         const topic = req.body.topic;
         const question = req.body.question;
         const answer = req.body.answer;
-        if (['networking', 'advance networking', 'network'].includes(topic.toLowerCase())) {
-            const questionData = new Question({
-                topic: topic,
-                question: question,
-                answer: answer,
-            });
-            await questionData.save();
-            res.status(201).render("addq", {isAuthenticated: req.cookies.jwt, message: "Question added successfully.", messageStatus: "Success!"});
-        } else {
-            res.status(400).render("addq", {isAuthenticated: req.cookies.jwt, message: "The topic is Invalid.", messageStatus: "Error!"});
-        }
+        const questionData = new Question({
+            topic: topic,
+            question: question,
+            answer: answer,
+        });
+        await questionData.save();
+        res.status(201).render("addq", {isAuthenticated: req.cookies.jwt, message: "Question added successfully.", messageStatus: "Success!"});
     } catch (error) {
         // console.log(error);
         res.status(401).send(error);

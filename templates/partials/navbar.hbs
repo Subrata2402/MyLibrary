@@ -4,16 +4,16 @@
     <label class="logo">MyLibrary</label>
 
     <ul>
-        <li><a class="active" href="/" id="home">home</a></li>
-        <li><a href="/resume" id="">Resume</a></li>
-        <li><a href="#" id="">About</a></li>
-        <li><a href="/contact" id="">Contact</a></li>
+        <li><a class="{{active.index}}" href="/" id="home">Home</a></li>
+        <li><a href="/resume" id="" class="{{active.resume}}">Resume</a></li>
+        <li><a href="#" id="" class="{{active.about}}">About</a></li>
+        <li><a href="/contact" id="" class="{{active.contact}}">Contact</a></li>
         {{#if isAuthenticated}}
-        <li><a href="/library" id="library">Library</a></li>
+        <li><a href="/library" id="library" class="{{active.library}}">Library</a></li>
         <li><a href="/logout" id="logout">logout</a></li>
         {{else}}
         <li><a href="/login" id="login">login</a></li>
         {{/if}}
     </ul>
 </nav>
-<script src="js/script.js"></script>
+<script src="jscript/script.js"></script>
