@@ -8,7 +8,7 @@
 
 <body>
     {{> navbar isAthenticated=isAthenticated}}
-    <div class="container-box">
+    <main class="container-box">
         <div class="login-container">
             <h2>Sign In</h2>
             {{#if messageStatus}}
@@ -34,7 +34,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </main>
     {{> footer}}
 
     <script>

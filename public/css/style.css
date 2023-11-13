@@ -83,7 +83,7 @@
     font-size: 18px;
 }
 
-.login-container button {
+.login-container form button {
     border: none;
     outline: none;
     background-color: cadetblue;
@@ -183,7 +183,7 @@
     color: black;
 }
 
-.add-question-container button, .contact-container button {
+.add-question-container button, .contact-form button {
     outline: none;
     border: none;
     margin-top: 20px;

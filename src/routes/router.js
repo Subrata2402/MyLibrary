@@ -108,9 +108,9 @@ router.post("/signup", async (req, res) => {
                 httpOnly: true,
             });
             await registerUser.save();
-            res.status(201).render("index", {isAuthenticated: req.cookies.jwt, active: getActive("/")});
+            res.status(201).render("index", {isAuthenticated: req.cookies.jwt, active: getActive("/"), message: "Registered successfully!", messageStatus: "Success!"});
         } else {
-            res.send("Passwords are not matching");
+            res.status(400).render("signup", {isAuthenticated: req.cookies.jwt, message: "Passwords do not match!", messageStatus: "Error!"});
         }
     } catch (error) {
         res.status(400).send(error);
@@ -129,9 +129,9 @@ router.post("/login", async (req, res) => {
             httpOnly: true,
         });
         if (isMatch) {
-            res.status(201).render("index", {isAuthenticated: true, active: getActive("/")});
+            res.status(201).render("index", {isAuthenticated: true, active: getActive("/"), message: "Logged in successfully!", messageStatus: "Success!"});
         } else {
-            res.send("Invalid Login Details");
+            res.status(400).render("login", {isAuthenticated: req.cookies.jwt, message: "Invalid Login Details", messageStatus: "Error!"});
         }
     } catch (error) {
         res.status(400).send("Invalid Login Details");
