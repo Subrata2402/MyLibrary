@@ -370,10 +370,16 @@ footer {
 @media (max-width: 1000px) {
     .container-box {
         margin-top: 50px;
+
     }
 
     .login-container {
-        width: 90%;
+        width: 95%;
+        padding: 0 10px;
+    }
+
+    .login-container h2 {
+        margin: 10px 0;
     }
 
     .label-input {
