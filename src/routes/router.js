@@ -124,17 +124,17 @@ router.post("/login", async (req, res) => {
         const userEmail = await Register.findOne({ emailid: email });
         const isMatch = await bcrypt.compare(password, userEmail.password);
         const token = await userEmail.generateAuthToken();
-        res.cookie("jwt", token, {
-            expires: new Date(Date.now() + 86400000),
-            httpOnly: true,
-        });
         if (isMatch) {
+            res.cookie("jwt", token, {
+                expires: new Date(Date.now() + 86400000),
+                httpOnly: true,
+            });
             res.status(201).render("index", {isAuthenticated: true, active: getActive("/"), message: "Logged in successfully!", messageStatus: "Success!"});
         } else {
-            res.status(400).render("login", {isAuthenticated: req.cookies.jwt, message: "Invalid Login Details", messageStatus: "Error!"});
+            res.status(201).render("login", {isAuthenticated: req.cookies.jwt, message: "Invalid Login Details", messageStatus: "Error!"});
         }
     } catch (error) {
-        res.status(400).send("Invalid Login Details");
+        res.status(400).send("Invalid Login Details\n\n" + error);
     }
 });
 
