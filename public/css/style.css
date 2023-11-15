@@ -9,6 +9,87 @@
     --bg-color: rgb(24, 26, 27);
 }
 
+::-webkit-scrollbar {
+    background-color: var(--bg-color);
+    color: white;
+}
+
+/* Hero section start */
+#hero {
+    width: 100%;
+    min-height: 100vh;
+    background: url("../images/web-development.jpg") top center;
+    background-size: cover;
+    overflow: hidden;
+}
+
+/* #hero:before {
+    content: "";
+    background: rgba(5, 13, 24, 0.3);
+    position: absolute;
+    bottom: 0;
+    top: 60px;
+    left: 0;
+    right: 0;
+} */
+
+#hero .hero-container {
+    position: relative;
+    z-index: 2;
+    min-width: 300px;
+}
+
+#hero h1 {
+    margin: 0 0 10px 0;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 56px;
+    color: #fff;
+}
+
+#hero p {
+    color: #fff;
+    margin-bottom: 50px;
+    font-size: 26px;
+    font-family: "Poppins", sans-serif;
+}
+
+#hero p span {
+    color: #fff;
+    padding-bottom: 4px;
+    letter-spacing: 1px;
+    border-bottom: 3px solid #149ddd;
+}
+
+@media (min-width: 1024px) {
+    #hero {
+        background-attachment: fixed;
+    }
+}
+
+@media (max-width: 768px) {
+    #hero h1 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    #hero h2 {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 30px;
+    }
+}
+
+/* Hero section end */
+
+/* Resume Section */
+
+.resume-main {
+    z-index: 1;
+}
+
+/* Login Container */
+
 .title {
     background-color: cadetblue;
     padding: 5px;
@@ -20,12 +101,14 @@
     margin: 100px 0;
     display: flex;
     justify-content: center;
+    z-index: 1;
+    color: white;
 }
 
 .login-container {
     width: 450px;
-    /* border: 2px solid cadetblue; */
-    border-radius: 5px;
+    border: 2px solid cadetblue;
+    border-radius: 8px;
     padding: 0 20px;
     box-shadow: 0 0 10px;
 }
@@ -45,8 +128,10 @@
 .login-container form {
     padding: 10px 15px;
     border: 2px solid cadetblue;
-    border-radius: 5px;
+    border-radius: 8px;
     margin-bottom: 20px;
+    background-color: var(--bg-color);
+    box-shadow: 0 0 10px;
 }
 
 .login-container i {
@@ -62,12 +147,13 @@
     font-size: 20px;
 }
 
-.label-input .input, input[abc="text"] {
+.label-input .input,
+input[abc="text"] {
     outline: none;
     border: 1px solid cadetblue;
     padding: 10px;
-    background-color: white;
-    color: black;
+    background-color: transparent;
+    color: white;
     border-radius: 5px;
     margin-top: 5px;
     display: flex;
@@ -79,7 +165,7 @@
 .label-input input[abc="password"] {
     border: none;
     outline: none;
-    background-color: white;
+    background-color: transparent;
     font-size: 18px;
 }
 
@@ -106,36 +192,42 @@
 
 .login-container button:hover {
     background-color: rgb(62, 120, 122);
-} 
+}
 
 .display-button {
     display: none;
 }
 
 /* Add Question part */
-.add-question, .contact-container {
+.add-question,
+.contact-container {
     margin: 50px 20%;
     /* width: 100%; */
     border: 2px solid cadetblue;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 8px;
     box-shadow: 0 0 10px;
     display: flex;
     flex-direction: column;
+    z-index: 1;
 }
 
-.add-question-container, .contact-container form {
+.add-question-container,
+.contact-container form {
     width: 100%;
     border: 2px solid cadetblue;
     padding: 0 30px 30px;
-    border-radius: 5px;
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    box-shadow: 0 0 10px;
 }
 
-.add-question h2, .contact-container h2 {
+.add-question h2,
+.contact-container h2 {
     text-align: center;
     margin-bottom: 20px;
     background-color: green;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 10px;
     font-weight: bold;
     color: white;
@@ -155,8 +247,7 @@
     padding: 0 10px;
     outline: none;
     border-radius: 5px;
-    background-color: white;
-    color: black;
+    background-color: transparent;
 }
 
 .add-question-container .topics select option {
@@ -164,31 +255,33 @@
     outline: none;
     border-radius: 5px;
     border: 1px solid cadetblue;
-    background-color: white;
-    color: black;
+    background-color: var(--bg-color);
 }
 
-.add-question-container label, .contact-container label {
+.add-question-container label,
+.contact-container label {
     font-size: 20px;
     margin: 15px 0 5px;
 }
 
-.add-question-container textarea, .contact-container textarea {
+.add-question-container textarea,
+.contact-container textarea {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid cadetblue;
     outline: none;
-    background-color: white;
-    color: black;
+    background-color: transparent;
+    color: white;
 }
 
-.add-question-container button, .contact-form button {
+.add-question-container button,
+.contact-form button {
     outline: none;
     border: none;
     margin-top: 20px;
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 8px;
     background-color: cadetblue;
     color: white;
     cursor: pointer;
@@ -196,7 +289,7 @@
     font-size: 20px;
 }
 
-.add-question-container button:hover {
+.add-question-container button:hover, .contact-form button:hover {
     opacity: 0.8;
 }
 
@@ -206,6 +299,7 @@
 
 .library-container {
     padding: 20px 20%;
+    z-index: 1;
 }
 
 .library-container a,
@@ -241,6 +335,7 @@
 }
 
 .library-container .topic:hover {
+    border: 2px solid cadetblue;
     box-shadow: 0 0 10px 0;
     transform: scale(1.03);
 }
@@ -283,7 +378,8 @@
 
 /* Contact Container Start */
 
-.contact-container span, .add-question-container span {
+.contact-container span,
+.add-question-container span {
     color: red;
 }
 
@@ -317,7 +413,8 @@
         width: 100%;
     }
 
-    .add-question, .contact-container {
+    .add-question,
+    .contact-container {
         margin: 20px 2%;
     }
 
@@ -325,8 +422,10 @@
         padding: 10px;
     }
 
-    .add-question, .add-question-container,
-    .contact-container, .contact-container form {
+    .add-question,
+    .add-question-container,
+    .contact-container,
+    .contact-container form {
         padding: 10px;
     }
 
@@ -334,7 +433,7 @@
         padding-top: 10px;
         flex-direction: column;
     }
-    
+
     .add-question-container .topics select {
         padding: 10px;
         outline: none;

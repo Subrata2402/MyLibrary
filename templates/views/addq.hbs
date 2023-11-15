@@ -10,54 +10,56 @@
 
 <body>
     {{> navbar isAthenticated=isAthenticated}}
-    <main class="add-question">
-        {{#if _id}}
-        <h2>Update Question</h2>
-        {{else}}
-        <h2>Add Question</h2>
-        {{/if}}
-        {{#if messageStatus}}
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>{{messageStatus}}</strong> {{message}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        {{/if}}
-        {{#if _id}}
-        <form action="/editq?_id={{_id}}&topic={{ topic }}" method="post" class="add-question-container">
-            <div class="topics">
-                <label for="topics">Topic<span>*</span></label>
-                <select name="topic" id="topics" disabled>
-                    <option value="{{ topic }}">{{ title }}</option>
-                </select>
+    <section id="hero" class="d-flex flex-column text-white">
+        <main class="add-question">
+            {{#if _id}}
+            <h2>Update Question</h2>
+            {{else}}
+            <h2>Add Question</h2>
+            {{/if}}
+            {{#if messageStatus}}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{messageStatus}}</strong> {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-            <label for="question">Question<span>*</span></label>
-            <textarea id="" cols="" rows="5" name="question" required>{{ question }}</textarea>
-            <label for="answer">Answer<span>*</span></label>
-            <textarea id="" cols="30" rows="10" name="answer" required>{{ answer }}</textarea>
-            <button type="submit">Update</button>
-        </form>
-        {{else}}
-        <form action="/addq" method="post" class="add-question-container">
-            <div class="topics">
-                <label for="topics">Topic<span>*</span></label>
-                <select name="topic" id="topics">
-                    <option value="advanced-networking">Advanced Networking</option>
-                    <option value="network-security">Network Security</option>
-                    <option value="iot-&-embedded-system">IoT &amp; Embedded System</option>
-                    <option value="machine-learning">Machine Learning</option>
-                    <option value="deep-learning">Deep Learning</option>
-                    <option value="electronics">Electronics</option>
-                </select>
-            </div>
-            <label for="question">Question<span>*</span></label>
-            <textarea id="" cols="" rows="5" name="question" required placeholder="What is Networking?"></textarea>
-            <label for="answer">Answer<span>*</span></label>
-            <textarea id="" cols="30" rows="10" name="answer" required
-                placeholder="Computer networking refers to interconnected computing devices that can exchange data and share resources with each other."></textarea>
-            <button type="submit">Submit</button>
-        </form>
-        {{/if}}
-    </main>
+            {{/if}}
+            {{#if _id}}
+            <form action="/editq?_id={{_id}}&topic={{ topic }}" method="post" class="add-question-container">
+                <div class="topics">
+                    <label for="topics">Topic<span>*</span></label>
+                    <select name="topic" id="topics" disabled>
+                        <option value="{{ topic }}">{{ title }}</option>
+                    </select>
+                </div>
+                <label for="question">Question<span>*</span></label>
+                <textarea id="" cols="" rows="5" name="question" required>{{ question }}</textarea>
+                <label for="answer">Answer<span>*</span></label>
+                <textarea id="" cols="30" rows="10" name="answer" required>{{ answer }}</textarea>
+                <button type="submit">Update</button>
+            </form>
+            {{else}}
+            <form action="/addq" method="post" class="add-question-container">
+                <div class="topics">
+                    <label for="topics">Topic<span>*</span></label>
+                    <select name="topic" id="topics">
+                        <option value="advanced-networking">Advanced Networking</option>
+                        <option value="network-security">Network Security</option>
+                        <option value="iot-&-embedded-system">IoT &amp; Embedded System</option>
+                        <option value="machine-learning">Machine Learning</option>
+                        <option value="deep-learning">Deep Learning</option>
+                        <option value="electronics">Electronics</option>
+                    </select>
+                </div>
+                <label for="question">Question<span>*</span></label>
+                <textarea id="" cols="" rows="5" name="question" required placeholder="What is Networking?"></textarea>
+                <label for="answer">Answer<span>*</span></label>
+                <textarea id="" cols="30" rows="10" name="answer" required
+                    placeholder="Computer networking refers to interconnected computing devices that can exchange data and share resources with each other."></textarea>
+                <button type="submit">Submit</button>
+            </form>
+            {{/if}}
+        </main>
+    </section>
     {{> footer}}
 </body>
 

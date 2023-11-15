@@ -8,43 +8,46 @@
 
 <body>
     {{> navbar isAthenticated=isAthenticated}}
-    <main class="container-box">
-        <div class="login-container">
-            <h2>Sign Up</h2>
-            <form action="/signup" method="post">
-                <div class="label-input">
-                    <label for="name"><i class="fa-solid fa-user"></i>Name</label>
-                    <input type="text" id="name" abc="text" name="username" required placeholder="Subrata Das">
-                </div>
-                <div class="label-input">
-                    <label for="email-id"><i class="fa-solid fa-envelope"></i>Email Id</label>
-                    <input type="email" id="email-id" abc="text" name="emailid" required placeholder="example@abc.com">
-                </div>
-                <div class="label-input">
-                    <label for="password"><i class="fa-solid fa-lock"></i>Password</label>
-                    <div class="input">
-                        <input type="password" name="password" abc="password" id="password" required
-                            placeholder="**********"><i class="fa-regular fa-ey"></i>
+    <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+        <main class="container-box">
+            <div class="login-container">
+                <h2>Sign Up</h2>
+                <form action="/signup" method="post">
+                    <div class="label-input">
+                        <label for="name"><i class="fa-solid fa-user"></i>Name</label>
+                        <input type="text" id="name" abc="text" name="username" required placeholder="Subrata Das">
                     </div>
-                </div>
-                <div class="label-input">
-                    <label for="confirm-password"><i class="fa-solid fa-lock"></i>Conferm Password</label>
-                    <div class="input">
-                        <input type="password" name="cpassword" abc="password" id="confirm-password" required
-                            placeholder="**********"><i class="fa-regular fa-eye"></i>
+                    <div class="label-input">
+                        <label for="email-id"><i class="fa-solid fa-envelope"></i>Email Id</label>
+                        <input type="email" id="email-id" abc="text" name="emailid" required
+                            placeholder="example@abc.com">
                     </div>
-                </div>
-                <div class="label-input">
-                    <button class="btn" id="signup-btn" type="submit">Sign Up</button>
-                    <label for="name">Already have an account? <a href="/login">Sign In</a></label>
-                </div>
-            </form>
-        </div>
-    </main>
+                    <div class="label-input">
+                        <label for="password"><i class="fa-solid fa-lock"></i>Password</label>
+                        <div class="input">
+                            <input type="password" name="password" abc="password" id="password" required
+                                placeholder="**********"><i class="fa-regular fa-ey"></i>
+                        </div>
+                    </div>
+                    <div class="label-input">
+                        <label for="confirm-password"><i class="fa-solid fa-lock"></i>Conferm Password</label>
+                        <div class="input">
+                            <input type="password" name="cpassword" abc="password" id="confirm-password" required
+                                placeholder="**********"><i class="fa-regular fa-eye"></i>
+                        </div>
+                    </div>
+                    <div class="label-input">
+                        <button class="btn" id="signup-btn" type="submit">Sign Up</button>
+                        <label for="name">Already have an account? <a href="/login">Sign In</a></label>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </section>
     {{> footer}}
     <script>
         let pEye = document.querySelector('.fa-eye');
-        let password = document.querySelector('input[type="password"]');
+        let password = document.querySelector('input[name="cpassword"]');
         pEye.addEventListener('click', () => {
             if (password.type === 'password') {
                 password.type = 'text';

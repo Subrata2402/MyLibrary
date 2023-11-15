@@ -12,7 +12,6 @@
 
         h2 {
             text-align: center;
-            margin-bottom: 20px;
             background-color: blue;
             color: white;
             padding: 10px;
@@ -22,11 +21,12 @@
 
         h3 {
             font-weight: bold;
-            color: green;
+            color: rgb(224, 248, 8);
         }
 
         p {
-            margin: 10px 0 0 15px;
+            margin: 10px 0 0 15px !important;
+            font-size: 16px !important;
         }
 
         span#time {
@@ -36,13 +36,20 @@
             color: blueviolet;
         }
 
-        {{!-- .question-container:hover {
+        /* .question-container:hover {
             border: 0.5px solid rgb(111, 112, 111);
             border-radius: 5px;
             padding: 10px;
             margin-bottom: 20px;
             margin-top: 10px;
-        } --}}
+        } */
+
+        .question-container {
+            background-color: rgb(24, 26, 27);
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
 
         .question-container a {
             text-decoration: none;
@@ -75,13 +82,19 @@
                 right: 20px;
             }
         }
+
+        @media (max-width: 768px) {
+            p {
+                font-size: 10px !important;
+            }
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body>
     {{> navbar isAthenticated=isAthenticated}}
-    <main>
+    <section id="hero" class="d-flex flex-column">
         <div class="box-container">
             <h2>{{ title }}</h2>
             {{#if messageStatus}}
@@ -109,7 +122,7 @@
             <h3>There are no questions! To add questions <a href="/addq">Click Here</a></h3>
             {{/if}}
         </div>
-    </main>
+    </section>
     {{> footer}}
     <script>
         const icons = document.querySelectorAll('.question-container');

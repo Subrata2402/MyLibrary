@@ -77,15 +77,14 @@ footer {
 .footer-bottom {
     background-color: black;
     padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     color: white;
+    text-align: center;
 }
 
-.footer-bottom span {
+.footer-bottom a {
     color: rgb(186, 226, 43);
     font-weight: bold;
+    text-decoration: none;
 }
 
 @media screen and (max-width: 1200px) {
@@ -98,6 +97,14 @@ footer {
     .footer-container {
         flex-direction: column;
         padding: 20px;
+    }
+
+    .footer-nav ul li, .social-icons a {
+        font-size: 15px;
+    }
+
+    .social-icons a i {
+        font-size: 20px;
     }
 }
 
