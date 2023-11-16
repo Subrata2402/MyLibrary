@@ -83,6 +83,10 @@ router.get("/signup", (req, res) => {
     res.render("signup", {isAuthenticated: req.cookies.jwt});
 });
 
+router.get("/about", (req, res) => {
+    res.render("about", {isAuthenticated: req.cookies.jwt, active: getActive(req.path)});
+});
+
 router.get("/login", (req, res) => {
     if (req.cookies.jwt) {
         res.render("index", {isAuthenticated: req.cookies.jwt, active: getActive("/")});

@@ -14,6 +14,11 @@
     color: white;
 }
 
+::selection {
+    background-color: black;
+    color: white;
+}
+
 /* Hero section start */
 #hero {
     width: 100%;
@@ -47,14 +52,14 @@
     color: #fff;
 }
 
-#hero p {
+#hero .hero-container p {
     color: #fff;
     margin-bottom: 50px;
     font-size: 26px;
     font-family: "Poppins", sans-serif;
 }
 
-#hero p span {
+#hero .hero-container p span {
     color: #fff;
     padding-bottom: 4px;
     letter-spacing: 1px;
@@ -81,6 +86,91 @@
 }
 
 /* Hero section end */
+
+/* About Section */
+
+.about-container {
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.about-mf .box-shadow-full {
+    padding: 20px;
+}
+
+/*--/ Sections /--*/
+.sect-4 {
+    padding: 4rem 0;
+}
+
+.sect-pt4 {
+    padding-top: 4rem;
+}
+
+.sect-mt4 {
+    margin-top: 4rem;
+}
+
+.title-box {
+    margin-bottom: 4rem;
+}
+
+/*--/ Title Left /--*/
+.title-box-2 {
+    margin-bottom: 3rem;
+}
+
+.title-left {
+    font-size: 2rem;
+    position: relative;
+}
+
+.title-left:before {
+    content: "";
+    position: absolute;
+    height: 3px;
+    background-color: #0078ff;
+    width: 100px;
+    bottom: -12px;
+}
+
+.title-s {
+    font-weight: 600;
+    color: #1e1e1e;
+    font-size: 1.1rem;
+}
+
+.about-mf .about-img {
+    margin-bottom: 2rem;
+}
+
+.about-mf .about-img img {
+    margin-left: 10px;
+}
+
+@media (min-width: 767px) {
+    .about-mf .box-pl2 {
+        margin-top: 3rem;
+        padding-left: 0rem;
+    }
+}
+
+.skill-mf span {
+    color: #4e4e4e;
+}
+
+.skill-mf .progress {
+    background-color: #cde1f8;
+    margin: 0.5rem 0 1.2rem 0;
+    border-radius: 0;
+    height: 0.7rem;
+}
+
+.skill-mf .progress .progress-bar {
+    height: 0.7rem;
+    background-color: #0078ff;
+}
 
 /* Resume Section */
 
@@ -248,6 +338,7 @@ input[abc="text"] {
     outline: none;
     border-radius: 5px;
     background-color: transparent;
+    color: white;
 }
 
 .add-question-container .topics select option {
@@ -256,6 +347,7 @@ input[abc="text"] {
     border-radius: 5px;
     border: 1px solid cadetblue;
     background-color: var(--bg-color);
+    color: white;
 }
 
 .add-question-container label,
@@ -289,7 +381,8 @@ input[abc="text"] {
     font-size: 20px;
 }
 
-.add-question-container button:hover, .contact-form button:hover {
+.add-question-container button:hover,
+.contact-form button:hover {
     opacity: 0.8;
 }
 
@@ -298,8 +391,7 @@ input[abc="text"] {
 /* Library Container Start */
 
 .library-container {
-    padding: 20px 20%;
-    z-index: 1;
+    padding: 20px 21%;
 }
 
 .library-container a,
