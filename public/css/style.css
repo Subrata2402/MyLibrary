@@ -92,7 +92,6 @@
 .about-container {
     background-color: var(--bg-color);
     border-radius: 8px;
-    margin-top: 20px;
 }
 
 .about-mf .box-shadow-full {
@@ -137,7 +136,7 @@
 
 .title-s {
     font-weight: 600;
-    color: #1e1e1e;
+    color: white;
     font-size: 1.1rem;
 }
 
@@ -157,7 +156,7 @@
 }
 
 .skill-mf span {
-    color: #4e4e4e;
+    color: rgb(168, 176, 167);
 }
 
 .skill-mf .progress {
@@ -477,6 +476,10 @@ input[abc="text"] {
 
 /* Responsive Design */
 @media (max-width: 1000px) {
+    #hero {
+        background-attachment: fixed;
+    }
+
     .container-box {
         margin-top: 50px;
 
