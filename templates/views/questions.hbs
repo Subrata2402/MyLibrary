@@ -24,8 +24,8 @@
             color: rgb(224, 248, 8);
         }
 
-        p {
-            margin: 10px 0 0 15px !important;
+        .answer {
+            padding: 10px 10px 0px 30px;
             font-size: 16px !important;
         }
 
@@ -83,13 +83,12 @@
             }
         }
 
-        @media (max-width: 768px) {
-            p {
+        {{!-- @media (max-width: 768px) {
+            div.answer {
                 font-size: 10px !important;
             }
-        }
+        } --}}
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body>
@@ -111,7 +110,7 @@
                     <a href="/editq?_id={{ _id }}&topic={{ topic }}"><i class="fa-solid fa-pen-to-square"></i></a>
                     <a href="/deleteq?_id={{ _id }}&topic={{ topic }}"><i class="fa-solid fa-trash"></i></a>
                 </div>
-                <p id="content{{math @index '+' 1}}"></p>
+                <div id="content{{math @index '+' 1}}" class="answer"></div>
                 <span id="time">{{time}}</span>
                 <script>
                     document.getElementById('content{{math @index "+" 1}}').innerHTML = marked.parse(`{{{ answer }}}`);

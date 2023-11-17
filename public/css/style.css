@@ -298,16 +298,13 @@ input[abc="text"] {
     box-shadow: 0 0 10px;
     display: flex;
     flex-direction: column;
-    z-index: 1;
 }
 
-.add-question-container,
-.contact-container form {
+.add-question-container {
     width: 100%;
     border: 2px solid cadetblue;
     padding: 0 30px 30px;
     border-radius: 8px;
-    background-color: var(--bg-color);
     box-shadow: 0 0 10px;
 }
 
@@ -336,8 +333,8 @@ input[abc="text"] {
     padding: 0 10px;
     outline: none;
     border-radius: 5px;
-    background-color: transparent;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 .add-question-container .topics select option {
@@ -345,8 +342,8 @@ input[abc="text"] {
     outline: none;
     border-radius: 5px;
     border: 1px solid cadetblue;
-    background-color: var(--bg-color);
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 .add-question-container label,
@@ -362,12 +359,12 @@ input[abc="text"] {
     border-radius: 5px;
     border: 1px solid cadetblue;
     outline: none;
-    background-color: transparent;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
-.add-question-container button,
-.contact-form button {
+.add-question-container button[type="submit"],
+.contact-form button[type="submit"] {
     outline: none;
     border: none;
     margin-top: 20px;
@@ -525,9 +522,18 @@ input[abc="text"] {
 
 /* Contact Container Start */
 
-.contact-container span,
-.add-question-container span {
+.contact-container label.span,
+.add-question-container label.span {
     color: red;
+}
+
+.contact-container form {
+    width: 100%;
+    border: 2px solid cadetblue;
+    padding: 0 30px 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px;
+    background-color: var(--bg-color);
 }
 
 /* Responsive Design */
