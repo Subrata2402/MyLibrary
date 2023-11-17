@@ -17,6 +17,10 @@ const registerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    superuser: {
+        type: Boolean,
+        default: false
+    },
     tokens: [{
         token: {
             type: String,

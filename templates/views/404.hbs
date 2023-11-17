@@ -1,20 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     {{> header}}
     <title>404 Error</title>
     <style>
         .error-container {
-            background-image: url("../images/404-error.webp");
-            background-size: cover;
-            height: 100vh;
-            color: red;
+            min-width: 100vw;
+            min-height: 100vh;
+            background-color: rgb(52 170 223);
         }
     </style>
 </head>
+
 <body>
     {{!-- {{> navbar isAthenticated=isAthenticated}} --}}
     <main class="error-container">
+        <div class="container d-flex align-items-center justify-content-center flex-wrap-reverse">
+            <div class="error-content d-flex align-items-center justify-content-center flex-column p-5 w-50">
+                <h1 class="fw-bold">404</h1>
+                <h2 class="fw-semibold">Page Not Found</h2>
+                <p class="fs-5">The page you are looking for might have been removed, had its name changed or is
+                    temporarily unavailable.
+                </p>
+                <a href="/" class="btn btn-success">Back to homepage</a>
+            </div>
+            <div class="error-image d-flex justify-content-center align-items-center w-50">
+
+                <img src="images/404-error.webp" alt="404">
+            </div>
+        </div>
     </main>
 </body>
+
 </html>

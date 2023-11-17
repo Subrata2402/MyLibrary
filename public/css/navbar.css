@@ -85,7 +85,7 @@ a#logout:hover, a#login:hover {
     transition: all .5s ease;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1050px) {
     nav {
         padding: 0 20px;
         background-color: darkcyan;
