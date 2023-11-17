@@ -25,6 +25,13 @@ label.logo a {
     text-decoration: none;
 }
 
+label.logo i {
+    line-height: 60px;
+    font-weight: 700;
+    color: white;
+    margin-right: 8px;
+}
+
 label.logo a img {
     height: 35px;
     margin-right: 8px;
