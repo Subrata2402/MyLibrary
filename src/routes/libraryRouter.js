@@ -11,7 +11,7 @@ router.use(express.urlencoded({ extended: false }));
 
 router.get("/addq", (req, res) => {
     if (req.cookies.jwt) {
-        res.render("addq", {isAuthenticated: req.cookies.jwt});
+        res.render("addq", {isAuthenticated: req.cookies.jwt, headerTitle: "Add Question"});
     } else {
         res.render("login", {isAuthenticated: req.cookies.jwt});
     }
@@ -58,7 +58,7 @@ router.get("/editq", async (req, res) => {
         if (!req.query._id) return res.render("library", {isAuthenticated: req.cookies.jwt});
         const data = await q_and_t(req.query._id, req.query.topic);
         const question = await Question.findById(req.query._id);
-        res.render("addq", {isAuthenticated: req.cookies.jwt, _id: req.query._id, title: data.title, question: question.question, answer: question.answer, topic: question.topic});
+        res.render("addq", {isAuthenticated: req.cookies.jwt, _id: req.query._id, title: data.title, question: question.question, answer: question.answer, topic: question.topic, headerTitle: "Update Question"});
     } else {
         res.render("login", {isAuthenticated: req.cookies.jwt});
     }
@@ -110,7 +110,7 @@ router.post("/addq", async (req, res) => {
             author_id: jwt.verify(req.cookies.jwt, process.env.SECRET_KEY)._id,
         });
         await questionData.save();
-        res.status(201).render("addq", {isAuthenticated: req.cookies.jwt, message: "Question added successfully.", messageStatus: "Success!"});
+        res.status(201).render("addq", {isAuthenticated: req.cookies.jwt, message: "Question added successfully.", messageStatus: "Success!", headerTitle: "Add Question"});
     } catch (error) {
         // console.log(error);
         res.status(401).send(error);
