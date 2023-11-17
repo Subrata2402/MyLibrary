@@ -11,11 +11,23 @@
             plugins: [
                 'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
                 'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen', 'insertdatetime',
-                'media', 'table', 'emoticons', 'template', 'help'
+                'media', 'table', 'emoticons', 'template', 'help', 'save', 'insertdatetime', 'quickbars', 'codesample'
             ],
-            toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | ' +
-                'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
-                'forecolor backcolor emoticons | help',
+            codesample_languages: [
+                { text: 'HTML/XML', value: 'markup' },
+                { text: 'JavaScript', value: 'javascript' },
+                { text: 'CSS', value: 'css' },
+                { text: 'PHP', value: 'php' },
+                { text: 'Ruby', value: 'ruby' },
+                { text: 'Python', value: 'python' },
+                { text: 'Java', value: 'java' },
+                { text: 'C', value: 'c' },
+                { text: 'C#', value: 'csharp' },
+                { text: 'C++', value: 'cpp' }
+            ],
+            toolbar: 'undo redo | styles | bold italic underline | align | ' +
+                'bullist numlist outdent indent | codesample blockquote link table | image media fullscreen | preview save print | ' +
+                'insertdatetime | forecolor backcolor emoticons | help',
             menu: {
                 favs: { title: 'My Favorites', items: 'code visualaid | searchreplace | emoticons' }
             },
@@ -70,7 +82,8 @@
             <textarea id="question" cols="" rows="5" name="question" required
                 placeholder="What is Networking?"></textarea>
             <label for="answer">Answer<span>*</span></label>
-            <textarea id="answer" cols="30" rows="10" name="answer" required placeholder=""></textarea>
+            <textarea id="answer" cols="30" rows="10" name="answer"
+                placeholder="Computer networking refers to interconnected computing devices that can exchange data and share resources with each other."></textarea>
             <button type="submit">Submit</button>
         </form>
         {{/if}}
