@@ -522,8 +522,8 @@ input[abc="text"] {
 
 /* Contact Container Start */
 
-.contact-container label.span,
-.add-question-container label.span {
+.contact-container label span,
+.add-question-container label span {
     color: red;
 }
 
