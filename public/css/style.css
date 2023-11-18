@@ -422,7 +422,7 @@ input[abc="text"] {
     margin-top: 20px;
 }
 
-.library-container .topic:hover {
+.library-container .topic:hover, .certificate-container:hover {
     border: 2px solid cadetblue;
     box-shadow: 0 0 10px 0;
     transform: scale(1.03);
