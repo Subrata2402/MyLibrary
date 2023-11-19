@@ -14,11 +14,6 @@
     color: white;
 }
 
-::selection {
-    background-color: black;
-    color: white;
-}
-
 /* Hero section start */
 #hero {
     width: 100%;
@@ -256,6 +251,7 @@ input[abc="text"] {
     outline: none;
     background-color: transparent;
     font-size: 18px;
+    color: white;
 }
 
 .login-container form button {
