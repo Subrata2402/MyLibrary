@@ -2,9 +2,10 @@
   "name": "mylibrary",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "npm run ./src/app.js",
+    "test": "cross-env NODE_ENV=test jest --watch && cross-env NODE_ENV=test npm run clean-up",
+    "test:staging": "cross-env NODE_ENV=staging npm run migrate && cross-env NODE_ENV=staging jest -f . --runInBand --forceExit && cross-env NODE_ENV=staging npm run clean-up",
     "dev": "nodemon src/app.js -e js, hbs"
   },
   "keywords": [],
