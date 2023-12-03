@@ -13,7 +13,9 @@
         <li><a href="/resume" id="" class="{{active.resume}}">Resume</a></li>
         <li><a href="/contact" id="" class="{{active.contact}}">Contact</a></li>
         {{#if isAuthenticated}}
+        {{#if superUser}}
         <li><a href="/library" id="library" class="{{active.library}}">Library</a></li>
+        {{/if}}
         <li><a href="/logout" id="logout">logout</a></li>
         {{else}}
         <li><a href="/login" id="login">login</a></li>

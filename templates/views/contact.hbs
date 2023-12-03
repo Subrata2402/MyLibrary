@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    {{> navbar isAthenticated=isAthenticated}}
+    {{> navbar isAthenticated=isAthenticated superUser=superUser}}
     <section id="hero" class="d-flex flex-column text-white">
         <main class="contact-container">
             <h2>Contact Us</h2>
@@ -39,7 +39,7 @@
 
                 <label for="message">Message<span>*</span></label>
                 <textarea id="message" cols="" rows="5" name="message" required
-                    placeholder="Write your message here..."></textarea>
+                    placeholder="Write your message here..." class="text-white"></textarea>
                 <button type="submit">Submit</button>
             </form>
         </main>

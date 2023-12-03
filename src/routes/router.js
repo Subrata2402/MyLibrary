@@ -3,6 +3,7 @@ const router = new express.Router();
 const bcrypt = require("bcryptjs");
 const cookieParser = require("cookie-parser");
 const auth = require("../middleware/auth");
+const func = require("../functions/new");
 require("dotenv").config();
 
 require("../db/conn");
@@ -12,55 +13,23 @@ router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
 router.use(cookieParser());
 
-const getActive = (path) => {
-    const navbar = {
-        index: "",
-        library: "",
-        contact: "",
-        resume: "",
-        about: "",
-    };
-    switch (path) {
-        case "/":
-            navbar.index = "active";
-            return navbar;
-        case "/library":
-            navbar.library = "active";
-            return navbar;
-        case "/contact":
-            navbar.contact = "active";
-            return navbar;
-        case "/resume":
-            navbar.resume = "active";
-            return navbar;
-        case "/about":
-            navbar.about = "active";
-            return navbar;
-    }
-}
-
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
     if (req.cookies.jwt) {
-        res.render("index", {isAuthenticated: req.cookies.jwt, active: getActive(req.path)});
+        const superUser = await func.superUser(req.cookies.jwt);
+        res.render("index", {isAuthenticated: req.cookies.jwt, active: func.getActive(req.path), superUser: superUser});
     } else {
-        res.render("login", {isAuthenticated: req.cookies.jwt, active: getActive(req.path)});
+        res.render("login", {isAuthenticated: req.cookies.jwt, active: func.getActive(req.path)});
     }
 });
 
-router.get("/library", (req, res) => {
-    if (req.cookies.jwt) {
-        res.render("library", {isAuthenticated: req.cookies.jwt, active: getActive(req.path)});
-    } else {
-        res.render("login", {isAuthenticated: req.cookies.jwt});
-    }
+router.get("/contact", async (req, res) => {
+    const superUser = await func.superUser(req.cookies.jwt);
+    res.render("contact", {isAuthenticated: req.cookies.jwt, active: func.getActive(req.path), superUser: superUser});
 });
 
-router.get("/contact", (req, res) => {
-    res.render("contact", {isAuthenticated: req.cookies.jwt, active: getActive(req.path)});
-});
-
-router.get("/resume", (req, res) => {
-    res.render("resume", {isAuthenticated: req.cookies.jwt, active: getActive(req.path)});
+router.get("/resume", async (req, res) => {
+    const superUser = await func.superUser(req.cookies.jwt);
+    res.render("resume", {isAuthenticated: req.cookies.jwt, active: func.getActive(req.path), superUser: superUser});
 });
 
 router.get("/logout", auth, async (req, res) => {
@@ -76,24 +45,28 @@ router.get("/logout", auth, async (req, res) => {
     }
 });
 
-router.get("/signup", (req, res) => {
+router.get("/signup", async (req, res) => {
     if (req.cookies.jwt) {
-        res.render("index", {isAuthenticated: req.cookies.jwt, active: getActive("/")});
+        const superUser = await func.superUser(req.cookies.jwt);
+        res.render("index", {isAuthenticated: req.cookies.jwt, active: func.getActive("/"), superUser: superUser});
     }
     res.render("signup", {isAuthenticated: req.cookies.jwt});
 });
 
-router.get("/about", (req, res) => {
-    res.render("about", {isAuthenticated: req.cookies.jwt, active: getActive(req.path)});
+router.get("/about", async (req, res) => {
+    const superUser = await func.superUser(req.cookies.jwt);
+    res.render("about", {isAuthenticated: req.cookies.jwt, active: func.getActive(req.path), superUser: superUser});
 });
 
-router.get("/certificates", (req, res) => {
-    res.render("certificates", {isAuthenticated: req.cookies.jwt, active: getActive(req.path)});
+router.get("/certificates", async (req, res) => {
+    const superUser = await func.superUser(req.cookies.jwt);
+    res.render("certificates", {isAuthenticated: req.cookies.jwt, active: func.getActive(req.path), superUser: superUser});
 });
 
-router.get("/login", (req, res) => {
+router.get("/login", async (req, res) => {
     if (req.cookies.jwt) {
-        res.render("index", {isAuthenticated: req.cookies.jwt, active: getActive("/")});
+        const superUser = await func.superUser(req.cookies.jwt);
+        res.render("index", {isAuthenticated: req.cookies.jwt, active: func.getActive("/"), superUser: superUser});
     }
     res.render("login", {isAuthenticated: req.cookies.jwt});
 });
@@ -110,13 +83,15 @@ router.post("/signup", async (req, res) => {
                 email: email,
                 password: password,
             });
+            // Generate auth token and redirect
             const token = await registerUser.generateAuthToken();
             res.cookie("jwt", token, {
                 expires: new Date(Date.now() + 86400000),
                 httpOnly: true,
             });
+            // Save data to the database
             await registerUser.save();
-            res.status(201).render("index", {isAuthenticated: req.cookies.jwt, active: getActive("/"), message: "Registered successfully!", messageStatus: "Success!"});
+            res.status(201).render("index", {isAuthenticated: req.cookies.jwt, active: func.getActive("/"), message: "Registered successfully!", messageStatus: "Success!"});
         } else {
             res.status(400).render("signup", {isAuthenticated: req.cookies.jwt, message: "Passwords do not match!", messageStatus: "Error!"});
         }
@@ -129,20 +104,21 @@ router.post("/login", async (req, res) => {
     try {
         const email = req.body.emailid;
         const password = req.body.password;
-        const userEmail = await Register.findOne({ emailid: email });
+        const userEmail = await Register.findOne({ email: email });
         const isMatch = await bcrypt.compare(password, userEmail.password);
-        const token = await userEmail.generateAuthToken();
         if (isMatch) {
+            const token = await userEmail.generateAuthToken();
             res.cookie("jwt", token, {
                 expires: new Date(Date.now() + 86400000),
                 httpOnly: true,
             });
-            res.status(201).render("index", {isAuthenticated: true, active: getActive("/"), message: "Logged in successfully!", messageStatus: "Success!"});
+            const superUser = await func.superUser(token);
+            res.status(201).render("index", {isAuthenticated: true, active: func.getActive("/"), message: "Logged in successfully!", messageStatus: "Success!", superUser: superUser});
         } else {
             res.status(201).render("login", {isAuthenticated: req.cookies.jwt, message: "Invalid Login Details", messageStatus: "Error!"});
         }
     } catch (error) {
-        res.status(400).send("Invalid Login Details\n\n" + error);
+        res.status(400).send(error);
     }
 });
 
@@ -152,8 +128,8 @@ router.post("/contact", async (req, res) => {
         const email = req.body.email;
         const mobile = req.body.mobile;
         const message = req.body.message;
-        // console.log(name, mobile, email, message);
-        res.status(201).render("contact", {isAuthenticated: req.cookies.jwt, message: "Your message has been sent successfully!", messageStatus: "Success!", active: getActive(req.path)});
+        const superUser = await func.superUser(req.cookies.jwt);
+        res.status(201).render("contact", {isAuthenticated: req.cookies.jwt, message: "Your message has been sent successfully!", messageStatus: "Success!", active: func.getActive(req.path), superUser: superUser});
     } catch (error) {
         res.status(400).send(error);
     }

@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    {{> navbar isAthenticated=isAthenticated}}
+    {{> navbar isAthenticated=isAthenticated superUser=superUser}}
     <section id="hero" class="d-flex flex-column">
         <main class="container-box">
             <div class="login-container">
@@ -20,8 +20,8 @@
                 {{/if}}
                 <form action="/login" method="post">
                     <div class="label-input">
-                        <label for="emailid"><i class="fa-solid fa-user fa-xs"></i>User Id</label>
-                        <input type="email" name="userid" abc="text" id="emailid" required
+                        <label for="userid"><i class="fa-solid fa-user fa-xs"></i>User Id</label>
+                        <input type="email" name="emailid" abc="text" id="userid" required
                             placeholder="example@abc.com">
                     </div>
                     <div class="label-input">

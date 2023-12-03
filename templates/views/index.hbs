@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    {{> navbar isAthenticated=isAthenticated}}
+    {{> navbar isAthenticated=isAthenticated superUser=superUser}}
     {{#if messageStatus}}
     <div class="alert alert-warning alert-dismissible fade show mt-3 mb-3" role="alert">
         <strong>{{messageStatus}}</strong> {{message}}
