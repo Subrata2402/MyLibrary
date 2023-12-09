@@ -32,6 +32,7 @@ router.get("/library", async (req, res) => {
 
 async function q_and_t(_id, topic) {
     const questions = await Question.find({topic: topic});
+    console.log(questions);
     const _title = topic.replace("-", " ").replace("and", "&").replace("-", " ").replace("-", " ");
     const title = _title.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
     return {questions: questions, title: title};
